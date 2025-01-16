@@ -1,0 +1,4 @@
+library verilog;
+use verilog.vl_types.all;
+entity register16bits_affichage_with_clear_vlg_vec_tst is
+end register16bits_affichage_with_clear_vlg_vec_tst;

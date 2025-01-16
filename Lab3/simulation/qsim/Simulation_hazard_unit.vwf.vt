@@ -1,0 +1,334 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "04/01/2024 13:48:41"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    HAZARD_UNIT
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module HAZARD_UNIT_vlg_sample_tst(
+	MEM_READ_ID_EX,
+	Rs_IF_ID,
+	Rt_ID_EX,
+	Rt_IF_ID,
+	sampler_tx
+);
+input  MEM_READ_ID_EX;
+input [4:0] Rs_IF_ID;
+input [4:0] Rt_ID_EX;
+input [4:0] Rt_IF_ID;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(MEM_READ_ID_EX or Rs_IF_ID or Rt_ID_EX or Rt_IF_ID)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module HAZARD_UNIT_vlg_check_tst (
+	PC_WRITE,
+	SEL_MUX_ID,
+	WRITE_IF_ID,
+	sampler_rx
+);
+input  PC_WRITE;
+input  SEL_MUX_ID;
+input  WRITE_IF_ID;
+input sampler_rx;
+
+reg  PC_WRITE_expected;
+reg  SEL_MUX_ID_expected;
+reg  WRITE_IF_ID_expected;
+
+reg  PC_WRITE_prev;
+reg  SEL_MUX_ID_prev;
+reg  WRITE_IF_ID_prev;
+
+reg  PC_WRITE_expected_prev;
+reg  SEL_MUX_ID_expected_prev;
+reg  WRITE_IF_ID_expected_prev;
+
+reg  last_PC_WRITE_exp;
+reg  last_SEL_MUX_ID_exp;
+reg  last_WRITE_IF_ID_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:3] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 3'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	PC_WRITE_prev = PC_WRITE;
+	SEL_MUX_ID_prev = SEL_MUX_ID;
+	WRITE_IF_ID_prev = WRITE_IF_ID;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	PC_WRITE_expected_prev = PC_WRITE_expected;
+	SEL_MUX_ID_expected_prev = SEL_MUX_ID_expected;
+	WRITE_IF_ID_expected_prev = WRITE_IF_ID_expected;
+end
+
+
+
+// expected PC_WRITE
+initial
+begin
+	PC_WRITE_expected = 1'bX;
+end 
+
+// expected WRITE_IF_ID
+initial
+begin
+	WRITE_IF_ID_expected = 1'bX;
+end 
+
+// expected SEL_MUX_ID
+initial
+begin
+	SEL_MUX_ID_expected = 1'bX;
+end 
+// generate trigger
+always @(PC_WRITE_expected or PC_WRITE or SEL_MUX_ID_expected or SEL_MUX_ID or WRITE_IF_ID_expected or WRITE_IF_ID)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected PC_WRITE = %b | expected SEL_MUX_ID = %b | expected WRITE_IF_ID = %b | ",PC_WRITE_expected_prev,SEL_MUX_ID_expected_prev,WRITE_IF_ID_expected_prev);
+	$display("| real PC_WRITE = %b | real SEL_MUX_ID = %b | real WRITE_IF_ID = %b | ",PC_WRITE_prev,SEL_MUX_ID_prev,WRITE_IF_ID_prev);
+`endif
+	if (
+		( PC_WRITE_expected_prev !== 1'bx ) && ( PC_WRITE_prev !== PC_WRITE_expected_prev )
+		&& ((PC_WRITE_expected_prev !== last_PC_WRITE_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port PC_WRITE :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", PC_WRITE_expected_prev);
+		$display ("     Real value = %b", PC_WRITE_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_PC_WRITE_exp = PC_WRITE_expected_prev;
+	end
+	if (
+		( SEL_MUX_ID_expected_prev !== 1'bx ) && ( SEL_MUX_ID_prev !== SEL_MUX_ID_expected_prev )
+		&& ((SEL_MUX_ID_expected_prev !== last_SEL_MUX_ID_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port SEL_MUX_ID :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", SEL_MUX_ID_expected_prev);
+		$display ("     Real value = %b", SEL_MUX_ID_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_SEL_MUX_ID_exp = SEL_MUX_ID_expected_prev;
+	end
+	if (
+		( WRITE_IF_ID_expected_prev !== 1'bx ) && ( WRITE_IF_ID_prev !== WRITE_IF_ID_expected_prev )
+		&& ((WRITE_IF_ID_expected_prev !== last_WRITE_IF_ID_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port WRITE_IF_ID :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", WRITE_IF_ID_expected_prev);
+		$display ("     Real value = %b", WRITE_IF_ID_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_WRITE_IF_ID_exp = WRITE_IF_ID_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module HAZARD_UNIT_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg MEM_READ_ID_EX;
+reg [4:0] Rs_IF_ID;
+reg [4:0] Rt_ID_EX;
+reg [4:0] Rt_IF_ID;
+// wires                                               
+wire PC_WRITE;
+wire SEL_MUX_ID;
+wire WRITE_IF_ID;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+HAZARD_UNIT i1 (
+// port map - connection between master ports and signals/registers   
+	.MEM_READ_ID_EX(MEM_READ_ID_EX),
+	.PC_WRITE(PC_WRITE),
+	.Rs_IF_ID(Rs_IF_ID),
+	.Rt_ID_EX(Rt_ID_EX),
+	.Rt_IF_ID(Rt_IF_ID),
+	.SEL_MUX_ID(SEL_MUX_ID),
+	.WRITE_IF_ID(WRITE_IF_ID)
+);
+
+// MEM_READ_ID_EX
+initial
+begin
+	MEM_READ_ID_EX = 1'b0;
+end 
+// Rt_ID_EX[ 4 ]
+initial
+begin
+	Rt_ID_EX[4] = 1'b1;
+end 
+// Rt_ID_EX[ 3 ]
+initial
+begin
+	Rt_ID_EX[3] = 1'b1;
+end 
+// Rt_ID_EX[ 2 ]
+initial
+begin
+	Rt_ID_EX[2] = 1'b1;
+end 
+// Rt_ID_EX[ 1 ]
+initial
+begin
+	Rt_ID_EX[1] = 1'b1;
+end 
+// Rt_ID_EX[ 0 ]
+initial
+begin
+	Rt_ID_EX[0] = 1'b1;
+end 
+// Rs_IF_ID[ 4 ]
+initial
+begin
+	Rs_IF_ID[4] = 1'b1;
+end 
+// Rs_IF_ID[ 3 ]
+initial
+begin
+	Rs_IF_ID[3] = 1'b1;
+end 
+// Rs_IF_ID[ 2 ]
+initial
+begin
+	Rs_IF_ID[2] = 1'b1;
+end 
+// Rs_IF_ID[ 1 ]
+initial
+begin
+	Rs_IF_ID[1] = 1'b1;
+end 
+// Rs_IF_ID[ 0 ]
+initial
+begin
+	Rs_IF_ID[0] = 1'b1;
+end 
+// Rt_IF_ID[ 4 ]
+initial
+begin
+	Rt_IF_ID[4] = 1'b1;
+end 
+// Rt_IF_ID[ 3 ]
+initial
+begin
+	Rt_IF_ID[3] = 1'b1;
+end 
+// Rt_IF_ID[ 2 ]
+initial
+begin
+	Rt_IF_ID[2] = 1'b1;
+end 
+// Rt_IF_ID[ 1 ]
+initial
+begin
+	Rt_IF_ID[1] = 1'b1;
+end 
+// Rt_IF_ID[ 0 ]
+initial
+begin
+	Rt_IF_ID[0] = 1'b1;
+end 
+
+HAZARD_UNIT_vlg_sample_tst tb_sample (
+	.MEM_READ_ID_EX(MEM_READ_ID_EX),
+	.Rs_IF_ID(Rs_IF_ID),
+	.Rt_ID_EX(Rt_ID_EX),
+	.Rt_IF_ID(Rt_IF_ID),
+	.sampler_tx(sampler)
+);
+
+HAZARD_UNIT_vlg_check_tst tb_out(
+	.PC_WRITE(PC_WRITE),
+	.SEL_MUX_ID(SEL_MUX_ID),
+	.WRITE_IF_ID(WRITE_IF_ID),
+	.sampler_rx(sampler)
+);
+endmodule
+

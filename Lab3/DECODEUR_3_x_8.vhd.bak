@@ -1,0 +1,33 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY DECODEUR_3_x_8 IS 
+PORT (input: IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      output_0 : OUT STD_LOGIC;
+      output_1 : OUT STD_LOGIC;
+      output_2 : OUT STD_LOGIC;
+      output_3 : OUT STD_LOGIC;
+      output_4 : OUT STD_LOGIC;
+      output_5 : OUT STD_LOGIC;
+      output_6 : OUT STD_LOGIC;
+      output_7 : OUT STD_LOGIC		
+
+);
+END ENTITY;
+
+
+ARCHITECTURE STRUCT OF DECODEUR_3_x_8_ IS 
+
+
+BEGIN 
+
+output_0 <= NOT(input(2)) AND NOT(input(1)) AND NOT(input(0));
+output_1 <= NOT(input(2)) AND NOT(input(1)) AND input(0);
+output_2 <= NOT(input(2)) AND input(1) AND NOT(input(0));
+output_3 <= NOT(input(2)) AND input(1) AND input(0);
+output_4 <= input(2) AND NOT(input(1)) AND NOT(input(0));
+output_5 <= input(2) AND NOT(input(1)) AND input(0);
+output_6 <= input(2) AND input(1) AND NOT(input(0));
+output_7 <= input(2) AND input(1) AND input(0);
+
+END STRUCT;

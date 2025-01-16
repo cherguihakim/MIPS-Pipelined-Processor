@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="Laboratoire2">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Processor_MIPS_with_Pipelines_diagram|DATA_MEMORY:inst29|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_beu3.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Processor_MIPS_with_Pipelines_diagram|INSTRUCTION_MEMORY:inst1|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_gdu3.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

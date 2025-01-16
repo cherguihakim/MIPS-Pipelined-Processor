@@ -1,0 +1,564 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "04/02/2024 00:06:21"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    BIG_MUX
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module BIG_MUX_vlg_sample_tst(
+	AluOp0,
+	AluOp1,
+	ALUSRC,
+	Branch,
+	Jump,
+	MemRead,
+	MemtoReg,
+	MemWrite,
+	RegDst,
+	RegWrite,
+	sel_big_mux,
+	sampler_tx
+);
+input  AluOp0;
+input  AluOp1;
+input  ALUSRC;
+input  Branch;
+input  Jump;
+input  MemRead;
+input  MemtoReg;
+input  MemWrite;
+input  RegDst;
+input  RegWrite;
+input  sel_big_mux;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(AluOp0 or AluOp1 or ALUSRC or Branch or Jump or MemRead or MemtoReg or MemWrite or RegDst or RegWrite or sel_big_mux)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module BIG_MUX_vlg_check_tst (
+	ALU_OP0_OUT,
+	ALU_OP1_OUT,
+	ALU_SRC_OUT,
+	BRANCH_OUT,
+	JUMP_OUT,
+	MEM_READ_OUT,
+	MEM_TO_REG_OUT,
+	MEM_WRITE_OUT,
+	REG_DST_OUT,
+	REG_WRITE_OUT,
+	sampler_rx
+);
+input  ALU_OP0_OUT;
+input  ALU_OP1_OUT;
+input  ALU_SRC_OUT;
+input  BRANCH_OUT;
+input  JUMP_OUT;
+input  MEM_READ_OUT;
+input  MEM_TO_REG_OUT;
+input  MEM_WRITE_OUT;
+input  REG_DST_OUT;
+input  REG_WRITE_OUT;
+input sampler_rx;
+
+reg  ALU_OP0_OUT_expected;
+reg  ALU_OP1_OUT_expected;
+reg  ALU_SRC_OUT_expected;
+reg  BRANCH_OUT_expected;
+reg  JUMP_OUT_expected;
+reg  MEM_READ_OUT_expected;
+reg  MEM_TO_REG_OUT_expected;
+reg  MEM_WRITE_OUT_expected;
+reg  REG_DST_OUT_expected;
+reg  REG_WRITE_OUT_expected;
+
+reg  ALU_OP0_OUT_prev;
+reg  ALU_OP1_OUT_prev;
+reg  ALU_SRC_OUT_prev;
+reg  BRANCH_OUT_prev;
+reg  JUMP_OUT_prev;
+reg  MEM_READ_OUT_prev;
+reg  MEM_TO_REG_OUT_prev;
+reg  MEM_WRITE_OUT_prev;
+reg  REG_DST_OUT_prev;
+reg  REG_WRITE_OUT_prev;
+
+reg  ALU_OP0_OUT_expected_prev;
+reg  ALU_OP1_OUT_expected_prev;
+reg  ALU_SRC_OUT_expected_prev;
+reg  BRANCH_OUT_expected_prev;
+reg  JUMP_OUT_expected_prev;
+reg  MEM_READ_OUT_expected_prev;
+reg  MEM_TO_REG_OUT_expected_prev;
+reg  MEM_WRITE_OUT_expected_prev;
+reg  REG_DST_OUT_expected_prev;
+reg  REG_WRITE_OUT_expected_prev;
+
+reg  last_ALU_OP0_OUT_exp;
+reg  last_ALU_OP1_OUT_exp;
+reg  last_ALU_SRC_OUT_exp;
+reg  last_BRANCH_OUT_exp;
+reg  last_JUMP_OUT_exp;
+reg  last_MEM_READ_OUT_exp;
+reg  last_MEM_TO_REG_OUT_exp;
+reg  last_MEM_WRITE_OUT_exp;
+reg  last_REG_DST_OUT_exp;
+reg  last_REG_WRITE_OUT_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:10] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 10'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	ALU_OP0_OUT_prev = ALU_OP0_OUT;
+	ALU_OP1_OUT_prev = ALU_OP1_OUT;
+	ALU_SRC_OUT_prev = ALU_SRC_OUT;
+	BRANCH_OUT_prev = BRANCH_OUT;
+	JUMP_OUT_prev = JUMP_OUT;
+	MEM_READ_OUT_prev = MEM_READ_OUT;
+	MEM_TO_REG_OUT_prev = MEM_TO_REG_OUT;
+	MEM_WRITE_OUT_prev = MEM_WRITE_OUT;
+	REG_DST_OUT_prev = REG_DST_OUT;
+	REG_WRITE_OUT_prev = REG_WRITE_OUT;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	ALU_OP0_OUT_expected_prev = ALU_OP0_OUT_expected;
+	ALU_OP1_OUT_expected_prev = ALU_OP1_OUT_expected;
+	ALU_SRC_OUT_expected_prev = ALU_SRC_OUT_expected;
+	BRANCH_OUT_expected_prev = BRANCH_OUT_expected;
+	JUMP_OUT_expected_prev = JUMP_OUT_expected;
+	MEM_READ_OUT_expected_prev = MEM_READ_OUT_expected;
+	MEM_TO_REG_OUT_expected_prev = MEM_TO_REG_OUT_expected;
+	MEM_WRITE_OUT_expected_prev = MEM_WRITE_OUT_expected;
+	REG_DST_OUT_expected_prev = REG_DST_OUT_expected;
+	REG_WRITE_OUT_expected_prev = REG_WRITE_OUT_expected;
+end
+
+
+
+// expected ALU_OP0_OUT
+initial
+begin
+	ALU_OP0_OUT_expected = 1'bX;
+end 
+
+// expected ALU_OP1_OUT
+initial
+begin
+	ALU_OP1_OUT_expected = 1'bX;
+end 
+
+// expected ALU_SRC_OUT
+initial
+begin
+	ALU_SRC_OUT_expected = 1'bX;
+end 
+
+// expected BRANCH_OUT
+initial
+begin
+	BRANCH_OUT_expected = 1'bX;
+end 
+
+// expected JUMP_OUT
+initial
+begin
+	JUMP_OUT_expected = 1'bX;
+end 
+
+// expected MEM_READ_OUT
+initial
+begin
+	MEM_READ_OUT_expected = 1'bX;
+end 
+
+// expected MEM_TO_REG_OUT
+initial
+begin
+	MEM_TO_REG_OUT_expected = 1'bX;
+end 
+
+// expected MEM_WRITE_OUT
+initial
+begin
+	MEM_WRITE_OUT_expected = 1'bX;
+end 
+
+// expected REG_DST_OUT
+initial
+begin
+	REG_DST_OUT_expected = 1'bX;
+end 
+
+// expected REG_WRITE_OUT
+initial
+begin
+	REG_WRITE_OUT_expected = 1'bX;
+end 
+// generate trigger
+always @(ALU_OP0_OUT_expected or ALU_OP0_OUT or ALU_OP1_OUT_expected or ALU_OP1_OUT or ALU_SRC_OUT_expected or ALU_SRC_OUT or BRANCH_OUT_expected or BRANCH_OUT or JUMP_OUT_expected or JUMP_OUT or MEM_READ_OUT_expected or MEM_READ_OUT or MEM_TO_REG_OUT_expected or MEM_TO_REG_OUT or MEM_WRITE_OUT_expected or MEM_WRITE_OUT or REG_DST_OUT_expected or REG_DST_OUT or REG_WRITE_OUT_expected or REG_WRITE_OUT)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected ALU_OP0_OUT = %b | expected ALU_OP1_OUT = %b | expected ALU_SRC_OUT = %b | expected BRANCH_OUT = %b | expected JUMP_OUT = %b | expected MEM_READ_OUT = %b | expected MEM_TO_REG_OUT = %b | expected MEM_WRITE_OUT = %b | expected REG_DST_OUT = %b | expected REG_WRITE_OUT = %b | ",ALU_OP0_OUT_expected_prev,ALU_OP1_OUT_expected_prev,ALU_SRC_OUT_expected_prev,BRANCH_OUT_expected_prev,JUMP_OUT_expected_prev,MEM_READ_OUT_expected_prev,MEM_TO_REG_OUT_expected_prev,MEM_WRITE_OUT_expected_prev,REG_DST_OUT_expected_prev,REG_WRITE_OUT_expected_prev);
+	$display("| real ALU_OP0_OUT = %b | real ALU_OP1_OUT = %b | real ALU_SRC_OUT = %b | real BRANCH_OUT = %b | real JUMP_OUT = %b | real MEM_READ_OUT = %b | real MEM_TO_REG_OUT = %b | real MEM_WRITE_OUT = %b | real REG_DST_OUT = %b | real REG_WRITE_OUT = %b | ",ALU_OP0_OUT_prev,ALU_OP1_OUT_prev,ALU_SRC_OUT_prev,BRANCH_OUT_prev,JUMP_OUT_prev,MEM_READ_OUT_prev,MEM_TO_REG_OUT_prev,MEM_WRITE_OUT_prev,REG_DST_OUT_prev,REG_WRITE_OUT_prev);
+`endif
+	if (
+		( ALU_OP0_OUT_expected_prev !== 1'bx ) && ( ALU_OP0_OUT_prev !== ALU_OP0_OUT_expected_prev )
+		&& ((ALU_OP0_OUT_expected_prev !== last_ALU_OP0_OUT_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port ALU_OP0_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", ALU_OP0_OUT_expected_prev);
+		$display ("     Real value = %b", ALU_OP0_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_ALU_OP0_OUT_exp = ALU_OP0_OUT_expected_prev;
+	end
+	if (
+		( ALU_OP1_OUT_expected_prev !== 1'bx ) && ( ALU_OP1_OUT_prev !== ALU_OP1_OUT_expected_prev )
+		&& ((ALU_OP1_OUT_expected_prev !== last_ALU_OP1_OUT_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port ALU_OP1_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", ALU_OP1_OUT_expected_prev);
+		$display ("     Real value = %b", ALU_OP1_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_ALU_OP1_OUT_exp = ALU_OP1_OUT_expected_prev;
+	end
+	if (
+		( ALU_SRC_OUT_expected_prev !== 1'bx ) && ( ALU_SRC_OUT_prev !== ALU_SRC_OUT_expected_prev )
+		&& ((ALU_SRC_OUT_expected_prev !== last_ALU_SRC_OUT_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port ALU_SRC_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", ALU_SRC_OUT_expected_prev);
+		$display ("     Real value = %b", ALU_SRC_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_ALU_SRC_OUT_exp = ALU_SRC_OUT_expected_prev;
+	end
+	if (
+		( BRANCH_OUT_expected_prev !== 1'bx ) && ( BRANCH_OUT_prev !== BRANCH_OUT_expected_prev )
+		&& ((BRANCH_OUT_expected_prev !== last_BRANCH_OUT_exp) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port BRANCH_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", BRANCH_OUT_expected_prev);
+		$display ("     Real value = %b", BRANCH_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_BRANCH_OUT_exp = BRANCH_OUT_expected_prev;
+	end
+	if (
+		( JUMP_OUT_expected_prev !== 1'bx ) && ( JUMP_OUT_prev !== JUMP_OUT_expected_prev )
+		&& ((JUMP_OUT_expected_prev !== last_JUMP_OUT_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port JUMP_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", JUMP_OUT_expected_prev);
+		$display ("     Real value = %b", JUMP_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_JUMP_OUT_exp = JUMP_OUT_expected_prev;
+	end
+	if (
+		( MEM_READ_OUT_expected_prev !== 1'bx ) && ( MEM_READ_OUT_prev !== MEM_READ_OUT_expected_prev )
+		&& ((MEM_READ_OUT_expected_prev !== last_MEM_READ_OUT_exp) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port MEM_READ_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", MEM_READ_OUT_expected_prev);
+		$display ("     Real value = %b", MEM_READ_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_MEM_READ_OUT_exp = MEM_READ_OUT_expected_prev;
+	end
+	if (
+		( MEM_TO_REG_OUT_expected_prev !== 1'bx ) && ( MEM_TO_REG_OUT_prev !== MEM_TO_REG_OUT_expected_prev )
+		&& ((MEM_TO_REG_OUT_expected_prev !== last_MEM_TO_REG_OUT_exp) ||
+			on_first_change[7])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port MEM_TO_REG_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", MEM_TO_REG_OUT_expected_prev);
+		$display ("     Real value = %b", MEM_TO_REG_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[7] = 1'b0;
+		last_MEM_TO_REG_OUT_exp = MEM_TO_REG_OUT_expected_prev;
+	end
+	if (
+		( MEM_WRITE_OUT_expected_prev !== 1'bx ) && ( MEM_WRITE_OUT_prev !== MEM_WRITE_OUT_expected_prev )
+		&& ((MEM_WRITE_OUT_expected_prev !== last_MEM_WRITE_OUT_exp) ||
+			on_first_change[8])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port MEM_WRITE_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", MEM_WRITE_OUT_expected_prev);
+		$display ("     Real value = %b", MEM_WRITE_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[8] = 1'b0;
+		last_MEM_WRITE_OUT_exp = MEM_WRITE_OUT_expected_prev;
+	end
+	if (
+		( REG_DST_OUT_expected_prev !== 1'bx ) && ( REG_DST_OUT_prev !== REG_DST_OUT_expected_prev )
+		&& ((REG_DST_OUT_expected_prev !== last_REG_DST_OUT_exp) ||
+			on_first_change[9])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port REG_DST_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", REG_DST_OUT_expected_prev);
+		$display ("     Real value = %b", REG_DST_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[9] = 1'b0;
+		last_REG_DST_OUT_exp = REG_DST_OUT_expected_prev;
+	end
+	if (
+		( REG_WRITE_OUT_expected_prev !== 1'bx ) && ( REG_WRITE_OUT_prev !== REG_WRITE_OUT_expected_prev )
+		&& ((REG_WRITE_OUT_expected_prev !== last_REG_WRITE_OUT_exp) ||
+			on_first_change[10])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port REG_WRITE_OUT :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", REG_WRITE_OUT_expected_prev);
+		$display ("     Real value = %b", REG_WRITE_OUT_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[10] = 1'b0;
+		last_REG_WRITE_OUT_exp = REG_WRITE_OUT_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module BIG_MUX_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg AluOp0;
+reg AluOp1;
+reg ALUSRC;
+reg Branch;
+reg Jump;
+reg MemRead;
+reg MemtoReg;
+reg MemWrite;
+reg RegDst;
+reg RegWrite;
+reg sel_big_mux;
+// wires                                               
+wire ALU_OP0_OUT;
+wire ALU_OP1_OUT;
+wire ALU_SRC_OUT;
+wire BRANCH_OUT;
+wire JUMP_OUT;
+wire MEM_READ_OUT;
+wire MEM_TO_REG_OUT;
+wire MEM_WRITE_OUT;
+wire REG_DST_OUT;
+wire REG_WRITE_OUT;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+BIG_MUX i1 (
+// port map - connection between master ports and signals/registers   
+	.ALU_OP0_OUT(ALU_OP0_OUT),
+	.ALU_OP1_OUT(ALU_OP1_OUT),
+	.ALU_SRC_OUT(ALU_SRC_OUT),
+	.AluOp0(AluOp0),
+	.AluOp1(AluOp1),
+	.ALUSRC(ALUSRC),
+	.Branch(Branch),
+	.BRANCH_OUT(BRANCH_OUT),
+	.Jump(Jump),
+	.JUMP_OUT(JUMP_OUT),
+	.MEM_READ_OUT(MEM_READ_OUT),
+	.MEM_TO_REG_OUT(MEM_TO_REG_OUT),
+	.MEM_WRITE_OUT(MEM_WRITE_OUT),
+	.MemRead(MemRead),
+	.MemtoReg(MemtoReg),
+	.MemWrite(MemWrite),
+	.REG_DST_OUT(REG_DST_OUT),
+	.REG_WRITE_OUT(REG_WRITE_OUT),
+	.RegDst(RegDst),
+	.RegWrite(RegWrite),
+	.sel_big_mux(sel_big_mux)
+);
+
+// AluOp0
+initial
+begin
+	AluOp0 = 1'b1;
+end 
+
+// AluOp1
+initial
+begin
+	AluOp1 = 1'b1;
+end 
+
+// ALUSRC
+initial
+begin
+	ALUSRC = 1'b1;
+end 
+
+// Branch
+initial
+begin
+	Branch = 1'b1;
+end 
+
+// Jump
+initial
+begin
+	Jump = 1'b1;
+end 
+
+// MemRead
+initial
+begin
+	MemRead = 1'b1;
+end 
+
+// MemtoReg
+initial
+begin
+	MemtoReg = 1'b1;
+end 
+
+// MemWrite
+initial
+begin
+	MemWrite = 1'b1;
+end 
+
+// RegDst
+initial
+begin
+	RegDst = 1'b1;
+end 
+
+// RegWrite
+initial
+begin
+	RegWrite = 1'b1;
+end 
+
+// sel_big_mux
+initial
+begin
+	sel_big_mux = 1'b1;
+end 
+
+BIG_MUX_vlg_sample_tst tb_sample (
+	.AluOp0(AluOp0),
+	.AluOp1(AluOp1),
+	.ALUSRC(ALUSRC),
+	.Branch(Branch),
+	.Jump(Jump),
+	.MemRead(MemRead),
+	.MemtoReg(MemtoReg),
+	.MemWrite(MemWrite),
+	.RegDst(RegDst),
+	.RegWrite(RegWrite),
+	.sel_big_mux(sel_big_mux),
+	.sampler_tx(sampler)
+);
+
+BIG_MUX_vlg_check_tst tb_out(
+	.ALU_OP0_OUT(ALU_OP0_OUT),
+	.ALU_OP1_OUT(ALU_OP1_OUT),
+	.ALU_SRC_OUT(ALU_SRC_OUT),
+	.BRANCH_OUT(BRANCH_OUT),
+	.JUMP_OUT(JUMP_OUT),
+	.MEM_READ_OUT(MEM_READ_OUT),
+	.MEM_TO_REG_OUT(MEM_TO_REG_OUT),
+	.MEM_WRITE_OUT(MEM_WRITE_OUT),
+	.REG_DST_OUT(REG_DST_OUT),
+	.REG_WRITE_OUT(REG_WRITE_OUT),
+	.sampler_rx(sampler)
+);
+endmodule
+
